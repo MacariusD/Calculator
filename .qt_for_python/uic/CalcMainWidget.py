@@ -135,6 +135,9 @@ class Ui_calculator_mainscreen(object):
         self.button_about.setGeometry(QtCore.QRect(130, 460, 93, 28))
         self.button_about.setCheckable(False)
         self.button_about.setObjectName("button_about")
+        self.label_title = QtWidgets.QLabel(calculator_mainscreen)
+        self.label_title.setGeometry(QtCore.QRect(40, 10, 271, 20))
+        self.label_title.setObjectName("label_title")
 
         self.retranslateUi(calculator_mainscreen)
         QtCore.QMetaObject.connectSlotsByName(calculator_mainscreen)
@@ -161,3 +164,4 @@ class Ui_calculator_mainscreen(object):
         self.value_three.setText(_translate("calculator_mainscreen", "3"))
         self.value_six.setText(_translate("calculator_mainscreen", "6"))
         self.button_about.setText(_translate("calculator_mainscreen", "About"))
+        self.label_title.setText(_translate("calculator_mainscreen", "Python Portfolio Project by Macarius D. Auguste"))
