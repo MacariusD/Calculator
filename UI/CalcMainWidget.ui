@@ -382,6 +382,19 @@
     <bool>false</bool>
    </property>
   </widget>
+  <widget class="QLabel" name="label_title">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>10</y>
+     <width>271</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Python Portfolio Project by Macarius D. Auguste</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
