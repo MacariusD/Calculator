@@ -1,23 +1,7 @@
 import sys
-from PyQt6 import uic
-from PyQt6.QtWidgets import QApplication, QWidget, QDialog
+from PyQt6.QtWidgets import QApplication
 
-from about_dialog import AboutDialog
-
-class CalcMainWindow(QWidget):
-    """main calculator window"""
-    def __init__(self):
-        super().__init__()
-
-        uic.loadUi("..\\UI\\CalcMainWidget.ui", self)
-
-        self.button_about.clicked.connect(self.onclicked_about_button)
-    
-    def onclicked_about_button(self):
-        """about info display"""
-        aboutdialog = AboutDialog()
-        aboutdialog.exec()
-
+from core import CalcMainWindow
 
 def main():
     app = QApplication(sys.argv)
