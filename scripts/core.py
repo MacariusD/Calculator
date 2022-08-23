@@ -5,8 +5,9 @@ import operator
 from about_dialog import AboutDialog
 
 # Calculator state.
-READY = 0
-INPUT = 1
+READY = 0 # Ready for a new input.
+INPUT = 1 # Inputting a number.
+
 class CalcMainWindow(QWidget):
     """main calculator window"""
     def __init__(self):
@@ -32,12 +33,15 @@ class CalcMainWindow(QWidget):
         # Setup actions
         self.button_all_clear.pressed.connect(self.reset)
 
+        #Memory connections
         self.button_memory_store.pressed.connect(self.memory_store)
         self.button_memory_recall.pressed.connect(self.memory_recall)
 
+        #Memory initialization
         self.memory = 0
         self.reset()
 
+        #Trigger Main Interface display
         self.show()
 
 
@@ -47,9 +51,11 @@ class CalcMainWindow(QWidget):
         aboutdialog.exec()
 
     def display(self):
+        """display the stack"""
         self.main_display.display(self.stack[-1])
 
     def reset(self):
+        """reset the calculator"""
         self.state = READY
         self.stack = [0]
         self.last_operation = None
@@ -67,6 +73,7 @@ class CalcMainWindow(QWidget):
         self.display()
 
     def operation(self, op):
+        """operation capture"""
         if self.current_op:  # Complete the current operation
             self.equals()
 
@@ -75,11 +82,13 @@ class CalcMainWindow(QWidget):
         self.current_op = op
 
     def operation_percent(self):
+        """percent operation"""
         self.state = INPUT
         self.stack[-1] *= 0.01
         self.display()
 
     def equal(self):
+        """equal operation"""
         # Support to allow '=' to repeat previous operation
         # if no further input has been added.
         if self.state == READY and self.last_operation:
@@ -100,9 +109,11 @@ class CalcMainWindow(QWidget):
                 self.display()
 
     def memory_store(self):
+        """memory store"""
         self.memory = self.main_display.value()
 
     def memory_recall(self):
+        """memory recall: """
         self.state = INPUT
         self.stack[-1] = self.memory
         self.display()
